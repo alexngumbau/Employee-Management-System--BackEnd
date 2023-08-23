@@ -1,0 +1,54 @@
+server:
+  port: 9001
+Spring:
+  profiles:
+    active: qa
+---
+
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ''
+    url: jdbc:mysql://localhost:3306/DailyCode2
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+---
+
+  spring:
+    profiles: qa
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      password: ''
+      url: jdbc:mysql://localhost:3306/DailyCode2--qa
+      username: root
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+    mvc:
+      pathmatch:
+        matching-strategy: ant_path_matcher
+
+---
+  spring:
+    profiles: prod
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      password: ''
+      url: jdbc:mysql://localhost:3306/DailyCode2--prod
+      username: root
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+    mvc:
+      pathmatch:
+        matching-strategy: ant_path_matcher
