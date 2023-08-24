@@ -3,6 +3,7 @@ package com.EmployeeManagementSystem.EmployeeManagementSystem.Employee;
 
 import Utilies.EntityResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,14 +16,17 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+
+
+
     // Get all employees
-    @GetMapping("/employees")
+    @GetMapping("/employees/all")
     public List<Employee> getAllEmployees () {
         return employeeService.findAll();
     }
 
     // Create employee
-    @PostMapping("/employees")
+    @PostMapping("/employees/create")
     public EntityResponse createEmployee(@RequestBody Employee employee) {
         return employeeService.createEmployee(employee);
     }
